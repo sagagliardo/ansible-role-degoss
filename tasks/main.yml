@@ -31,7 +31,6 @@
      - /tmp/degoss
      - /tmp/degoss/bin
      - /tmp/degoss/tests
-   notify: clean
 
  # download goss
  - name: install
@@ -63,3 +62,6 @@
  - name: run tests
    goss: executable=/tmp/degoss/bin/goss path="/tmp/degoss/tests/{{ item }}" format="{{ format }}"
    with_items: "{{ test_files }}"
+
+ - name: clean
+   file: path=/tmp/degoss state=absent
