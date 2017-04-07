@@ -3,9 +3,7 @@ language: python
 
 # support minimum python versions specified here:
 # https://docs.ansible.com/ansible/dev_guide/developing_modules_python3.html
-python:
-  - "2.6"
-  - "3.5"
+python: 2.7
 
 cache:
   pip: true
