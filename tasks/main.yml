@@ -44,6 +44,7 @@
    copy: src={{ item }} dest=/tmp/degoss/tests/
    with_items: "{{ tests }}"
 
+ # identify names of files to test
  - name: define tests
    set_fact:
     test_files: |
