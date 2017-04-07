@@ -45,7 +45,21 @@
    copy: src={{ item }} dest=/tmp/degoss/tests/
    with_items: "{{ tests }}"
 
+ - name: define tests
+   set_fact:
+    test_files: |
+      {% set test_list = [] -%}
+      {%- for test in tests -%}
+        {%- if '/' in test -%}
+          {% set ignored = test_list.append(test.split('/') | last) -%}
+        {%- else -%}
+          {% set ignored = test_list.append(test) -%}
+        {%- endif -%}
+      {%- endfor %}
+      {{ test_list }}
+
+
  # run the tests
  - name: run tests
-   goss: executable=/tmp/degoss/bin/goss path="{{ item }}" format="{{ format }}"
-   with_fileglob: /tmp/degoss/tests/*.yml
+   goss: executable=/tmp/degoss/bin/goss path="/tmp/degoss/tests/{{ item }}" format="{{ format }}"
+   with_items: "{{ test_files }}"
