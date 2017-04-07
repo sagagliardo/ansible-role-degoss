@@ -17,7 +17,7 @@ Role Variables
 
 <dl>
   <dt><code>tests</code></dt>
-  <dd>A Goss test file or list of files to run on the target machine.</dd>
+  <dd>A Goss test file or list of files to run on the target machine. These test files should be listed in an array like in the example playbook below.</dd>
   <dt><code>version</code></dt>
   <dd>The version string of Goss to install. Example: <code>0.2.5</code>.</dd>
 </dl>
@@ -35,7 +35,7 @@ Run Goss:
 ```
  - hosts: servers
    roles:
-     - { role: degoss, tests: goss.yml }
+     - { role: degoss, tests: ["goss.yml", "goss2.yml"] }
 ```
 
 Run Goss with a specific version:
