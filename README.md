@@ -43,7 +43,7 @@ Run Goss with a specific version:
 ```
  - hosts: servers
    roles:
-     - { role: degoss, version: "0.2.5", tests: goss.yml }
+     - { role: degoss, version: "0.2.5", tests: ["goss.yml"] }
 ```
 
 License
